@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  cloud-ai-app:
+  example-app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: cloud-ai-app
+    container_name: example-app
     restart: unless-stopped
     ports:
       - "9000:9000"  # Port for Laravel
@@ -16,7 +16,7 @@ services:
       - APP_DEBUG=${APP_DEBUG}
       - APP_URL=${APP_URL}
       - ASSET_URL=${APP_URL}
-      - APP_NAME=Cloud AI
+      - APP_NAME=Example App
       - LOG_CHANNEL=${LOG_CHANNEL}
       - DB_CONNECTION=pgsql
       - DB_HOST=${DB_HOST}
@@ -32,25 +32,25 @@ services:
       - REDIS_HOST=${REDIS_HOST}
       - REDIS_PORT=${REDIS_PORT}
       - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - VITE_APP_NAME=Cloud AI
+      - VITE_APP_NAME=Example App
       - VITE_SSR=${VITE_SSR}
       - VIEW_COMPILED_PATH=/var/www/html/storage/framework/views
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cloud-ai.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.cloud-ai.entrypoints=websecure"
-      - "traefik.http.routers.cloud-ai.tls.certresolver=le"
-      - "traefik.http.services.cloud-ai.loadbalancer.server.port=80"
-      - "traefik.http.services.cloud-ai.loadbalancer.healthcheck.path=/health-check"
-      - "traefik.http.services.cloud-ai.loadbalancer.healthcheck.interval=10s"
-      - "traefik.http.services.cloud-ai.loadbalancer.healthcheck.timeout=15s"
+      - "traefik.http.routers.example-app.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.example-app.entrypoints=websecure"
+      - "traefik.http.routers.example-app.tls.certresolver=le"
+      - "traefik.http.services.example-app.loadbalancer.server.port=80"
+      - "traefik.http.services.example-app.loadbalancer.healthcheck.path=/health-check"
+      - "traefik.http.services.example-app.loadbalancer.healthcheck.interval=10s"
+      - "traefik.http.services.example-app.loadbalancer.healthcheck.timeout=15s"
     volumes:
       - ./storage/app:/var/www/html/storage/app
       - ./storage/logs:/var/www/html/storage/logs
       - ./.env:/var/www/html/.env
     networks:
-      - cloud-ai-network
+      - example-network
 
 networks:
-  cloud-ai-network:
+  example-network:
     driver: bridge

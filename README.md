@@ -17,6 +17,21 @@
 #### ⚙️ Basic Configuration
 - **Docker Compose Location**: `/docker-compose.yml`
 
+#### 📄 Customizing the Application
+Before deploying, consider modifying the following:
+
+- 🔄 In `docker-compose.yml`, replace `example-app` with your application name:
+  ```yaml
+  services:
+    your-app-name:  # Change from example-app to your app name
+      container_name: your-app-name
+      # ...
+  
+  networks:
+    your-network-name:  # Also update network name
+      driver: bridge
+  ```
+
 #### 🔑 Environment Variables
 Set up the following environment variables in Coolify:
 
