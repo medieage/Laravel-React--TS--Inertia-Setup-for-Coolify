@@ -1,0 +1,42 @@
+# System files
+.git
+.github
+.gitignore
+.DS_Store
+Thumbs.db
+
+# Dependencies
+/node_modules
+/vendor
+/.pnp
+.pnp.js
+
+# Local files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.phpunit.result.cache
+
+# Logs
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+
+# Temporary build files
+/public/build
+/public/hot
+/public/storage
+/bootstrap/cache/*
+
+# IDE cache
+/.idea
+/.vscode
+/*.sublime-workspace
+/.phpstorm.meta.php
+/_ide_helper.php
+/_ide_helper_models.php
+
+# Tests
+/tests
+phpunit.xml
