@@ -66,6 +66,32 @@ DOMAIN=your-domain.com
 - Click the **Deploy** button to start the deployment process
 - Wait for the build and deployment to complete
 
+### 🐳 Using Pre-built Docker Image
+
+This repository includes a GitHub Actions workflow that automatically builds and publishes Docker images to GitHub Container Registry (GHCR).
+
+To use the pre-built image:
+
+1. 🔄 Pull the image from GitHub Container Registry:
+   ```bash
+   docker pull ghcr.io/username/repository:latest
+   ```
+   
+2. 🚀 Run the container:
+   ```bash
+   docker run -p 80:80 -p 9000:9000 --env-file .env ghcr.io/username/repository:latest
+   ```
+
+3. 🔗 Or update your docker-compose.yml to use the pre-built image:
+   ```yaml
+   services:
+     your-app-name:
+       image: ghcr.io/username/repository:latest
+       # instead of the build directive
+   ```
+
+> **Note**: Replace `username/repository` with your actual GitHub username and repository name.
+
 ## 💻 Technology Stack
 
 ### Backend
